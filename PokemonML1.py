@@ -3,6 +3,7 @@
 import os
 import numpy as np
 import pandas as pd
+pd.set_option('expand_frame_repr', False)
 
 # Analyse des fichiers
 
@@ -40,5 +41,19 @@ print(Combats.head(10))
 premiere_position = Combats.groupby('Premier_Pokemon').count()
 seconde_position = Combats.groupby('Second_Pokemon').count()
 
-total_combats = premiere_position+seconde_position
-print(total_combats)
+victoires = Combats.groupby('Pokemon_Gagnant').count()
+
+list_agreg = Combats.groupby('Pokemon_Gagnant').count()
+list_agreg.sort_index()
+
+list_agreg['NBR_COMBATS'] = premiere_position.Pokemon_Gagnant + seconde_position.Pokemon_Gagnant
+list_agreg['NBR_VICTOIRES'] = victoires.Premier_Pokemon
+
+list_agreg['POURCENTAGE_VICTOIRES'] = victoires.Premier_Pokemon / (premiere_position.Pokemon_Gagnant
+                                                                   + seconde_position.Pokemon_Gagnant)
+
+# Fusionner les deux jeux de données
+
+stats_pokedex = Pokemons.merge(list_agreg, left_on='NUMERO', right_index=True, how='left')
+stats_pokedex = stats_pokedex.drop(['Premier_Pokemon', 'Second_Pokemon'], axis=1)
+print(stats_pokedex.head(20))
