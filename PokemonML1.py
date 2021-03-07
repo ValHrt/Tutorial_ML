@@ -91,5 +91,5 @@ plt.title("POKEMONS DE TYPE 2")
 
 print(stats_pokedex.groupby('TYPE_1').agg({"POURCENTAGE_VICTOIRES": "mean"}).sort_values(by="POURCENTAGE_VICTOIRES"))
 
-# Faire ressortir un taux de victoire en fonction du type contre un autre type (sur un autre script)
+stats_pokedex.to_csv("datas/stats_pokedex.csv", sep='\t')
 
