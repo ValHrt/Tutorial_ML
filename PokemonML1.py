@@ -35,7 +35,7 @@ Pokemons['NOM'][62] = "Colossinge"
 # Changer les erreurs dans le jeu de données
 
 Pokemons['TYPE_1'].unique()
-Pokemons_mask=Pokemons['TYPE_1']=='E'
+Pokemons_mask = Pokemons['TYPE_1'] == 'E'
 filtered_pokemons = Pokemons[Pokemons_mask]
 print(filtered_pokemons)  # erreur sur Azumarill avec un TYPE_1 = "E"
 
@@ -91,5 +91,5 @@ plt.title("POKEMONS DE TYPE 2")
 
 print(stats_pokedex.groupby('TYPE_1').agg({"POURCENTAGE_VICTOIRES": "mean"}).sort_values(by="POURCENTAGE_VICTOIRES"))
 
-# Faire ressortir un taux de victoire en fonction du type contre un autre type
+# Faire ressortir un taux de victoire en fonction du type contre un autre type (sur un autre script)
 
