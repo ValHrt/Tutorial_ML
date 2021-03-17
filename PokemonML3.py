@@ -28,3 +28,35 @@ precision = r2_score(y_val, predictions)
 print(">> ---------- REGRESSION LINÉAIRE ----------")
 print(">> Precision = "+str(precision))
 print(">> -----------------------------------------")
+
+# Appliquer le modèle de Decision Tree
+
+from sklearn.tree import DecisionTreeRegressor
+algorithme2 = DecisionTreeRegressor(random_state=1234)
+
+algorithme2.fit(X_train, y_train)
+predictions2 = algorithme2.predict(X_val)
+precision2 = r2_score(y_val, predictions2)
+
+print(">> ---------- Decision Tree Regressor ----------")
+print(">> Precision = "+str(precision2))
+print(">> ---------------------------------------------")
+
+# Appliquer le modèle de Random Forest
+
+from sklearn.ensemble import RandomForestRegressor
+algorithme3 = RandomForestRegressor(random_state=1234)
+
+algorithme3.fit(X_train, y_train)
+predictions3 = algorithme3.predict(X_val)
+precision3 = r2_score(y_val, predictions3)
+
+print(">> ---------- Random Forest Regressor ----------")
+print(">> Precision = "+str(precision3))
+print(">> ---------------------------------------------")
+
+# Sauvegarder le meilleur modèle
+
+import joblib
+fichier = 'Modele/modele_pokemon.mod'
+joblib.dump(algorithme3, fichier)
