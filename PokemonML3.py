@@ -23,10 +23,12 @@ algorithme = LinearRegression()
 algorithme.fit(X_train, y_train)
 
 predictions = algorithme.predict(X_val)
+precision_apprentissage = algorithme.score(X_train, y_train)
 precision = r2_score(y_val, predictions)
 
 print(">> ---------- REGRESSION LINÉAIRE ----------")
-print(">> Precision = "+str(precision))
+print(">> Precision apprentissage = "+str(precision_apprentissage))
+print(">> Precision validation = "+str(precision))
 print(">> -----------------------------------------")
 
 # Appliquer le modèle de Decision Tree
@@ -36,10 +38,12 @@ algorithme2 = DecisionTreeRegressor(random_state=1234)
 
 algorithme2.fit(X_train, y_train)
 predictions2 = algorithme2.predict(X_val)
+precision2_apprentissage = algorithme2.score(X_train, y_train)
 precision2 = r2_score(y_val, predictions2)
 
 print(">> ---------- Decision Tree Regressor ----------")
-print(">> Precision = "+str(precision2))
+print(">> Precision apprentissage = "+str(precision2_apprentissage))
+print(">> Precision validation = "+str(precision2))
 print(">> ---------------------------------------------")
 
 # Appliquer le modèle de Random Forest
@@ -49,14 +53,16 @@ algorithme3 = RandomForestRegressor(random_state=1234)
 
 algorithme3.fit(X_train, y_train)
 predictions3 = algorithme3.predict(X_val)
+precision3_apprentissage = algorithme3.score(X_train, y_train)
 precision3 = r2_score(y_val, predictions3)
 
 print(">> ---------- Random Forest Regressor ----------")
-print(">> Precision = "+str(precision3))
+print(">> Precision apprentissage = "+str(precision3_apprentissage))
+print(">> Precision validation = "+str(precision3))
 print(">> ---------------------------------------------")
 
 # Sauvegarder le meilleur modèle
 
-import joblib
-fichier = 'Modele/modele_pokemon.mod'
-joblib.dump(algorithme3, fichier)
+#import joblib
+#fichier = 'Modele/modele_pokemon.mod'
+#joblib.dump(algorithme3, fichier)
