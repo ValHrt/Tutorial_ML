@@ -8,7 +8,7 @@ def recherche_pokemon(NumPokemon, Pokedex):
         if int(pokemon[0]) == NumPokemon:
             infos_pokemon = [pokemon[0], pokemon[1], pokemon[4], pokemon[5], pokemon[6], pokemon[7], pokemon[8], pokemon[9], pokemon[10]]
             break
-        return infos_pokemon
+    return infos_pokemon
 
 
 def prediction_combat(NumPokemon1, NumPokemon2, Pokedex):
@@ -28,7 +28,7 @@ def prediction_combat(NumPokemon1, NumPokemon2, Pokedex):
         print(pokemon2[1].upper() + " EST LE VAINQUEUR !")
 
 
-with open("datas/pokedex.csv", newline='', errors='ignore') as csvfile:
+with open("datas/pokedex.csv", newline='\r\n') as csvfile:
     Pokedex = csv.reader(csvfile)
     next(Pokedex)
-    prediction_combat(3, 6, Pokedex)
+    prediction_combat(7, 12, Pokedex)
